@@ -6,7 +6,7 @@ if (form != null) {
         let keyword = form.keyword.value;
         $("#element").text(keyword);
         started();
-        $.getJSON('./metadata.json', (result) => {
+        $.getJSON('js/metadata.json', (result) => {
             result.files.forEach(url => {
                 search.push(url);
             })
