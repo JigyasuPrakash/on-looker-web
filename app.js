@@ -66,5 +66,5 @@ app.post('/upload', upload.single('myImage'), (req, res) => {
 })
 
 // Listening to port
-const port = 3000;
-app.listen(port, () => console.log(`Server started on ${port}`));
+const PORT = process.env.PORT | 3000;
+app.listen(PORT, () => console.log(`Server started on ${port}`));
