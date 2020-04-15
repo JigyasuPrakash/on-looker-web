@@ -1,0 +1,25 @@
+{
+  "name": "on-looker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JigyasuPrakash/on-looker.git"
+  },
+  "author": "Jigyasu Prakash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JigyasuPrakash/on-looker/issues"
+  },
+  "homepage": "https://github.com/JigyasuPrakash/on-looker#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "tesseract.js": "^2.1.1"
+  }
+}
