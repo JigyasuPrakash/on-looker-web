@@ -1,21 +1,17 @@
 {
   "name": "on-looker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Image searching engine",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JigyasuPrakash/on-looker.git"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "Jigyasu Prakash",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JigyasuPrakash/on-looker/issues"
+  "engines": {
+    "node": "12.11.1"
   },
-  "homepage": "https://github.com/JigyasuPrakash/on-looker#readme",
   "dependencies": {
     "ejs": "^3.0.2",
     "express": "^4.17.1",

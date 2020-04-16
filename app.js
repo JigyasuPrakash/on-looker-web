@@ -7,7 +7,7 @@ var resStatus = '';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './public/img/')
+        cb(null, './public/uploads/')
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
@@ -31,7 +31,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({
     storage: storage,
-    dest: './public/img/',
+    dest: './public/uploads/',
     limits: { fileSize: 1024 * 1024 * 5 },
     fileFilter: fileFilter
 });
@@ -66,5 +66,5 @@ app.post('/upload', upload.single('myImage'), (req, res) => {
 })
 
 // Listening to port
-const PORT = process.env.PORT | 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
