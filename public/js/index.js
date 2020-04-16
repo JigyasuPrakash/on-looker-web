@@ -49,7 +49,7 @@ if (searchForm != null) {
             $.ajax(settings).done(function (response) {
                 completed("search");
                 searchForm.reset();
-                console.log(response);
+                updateUI(response.url)
             });
         } else {
             alert('Enter Somthing to Search');
@@ -64,6 +64,7 @@ function started(task) {
         document.getElementById("myDiv").style.display = "none";
     } else {
         $("#keyword").prop("disabled", true);
+        $("#result-images").empty();
         document.getElementById("loader").style.display = "block";
         document.getElementById("myDiv").style.display = "none";
     }
@@ -80,9 +81,11 @@ function completed(task) {
     }
 }
 
-// function updateUI(url) {
-//     $("#result-images").append(`
-//         <img style="margin:5px ;padding: 10px; border: 1px solid black; height: 200px; width: auto;"
-//             src="${url}" />
-//     `);
-// }
+function updateUI(url) {
+    url.forEach(img => {
+        $("#result-images").append(`
+        <img style="margin:5px ;padding: 10px; border: 1px solid black; height: 200px; width: auto;"
+            src="${img}" />
+        `);
+    });
+}

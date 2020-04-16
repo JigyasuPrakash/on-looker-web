@@ -2,6 +2,10 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 var Tesseract = require('tesseract.js');
+const config = require('./config/database');
+const mongoClient = require('mongodb').MongoClient;
+
+const client = new mongoClient(config.database, { useUnifiedTopology: true, useNewUrlParser: true });
 
 var resStatus = '';
 
@@ -32,7 +36,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
     storage: storage,
     dest: './public/uploads/',
-    limits: { fileSize: 1024 * 1024 * 5 },
+    limits: { fileSize: 1024 * 1024 * 2 },
     fileFilter: fileFilter
 });
 
@@ -47,15 +51,33 @@ app.use(express.static('./public'));
 
 app.get('/', (req, res) => res.render('index'));
 
-app.post('/search', (req, res) => {
-    let keyword = req.query.keyword;
-    res.json({ message: keyword })
+app.get('/search', (req, res) => {
+    var resURL = []
+    let keyword = req.query.keyword.toLowerCase().split(" ").join("|");
+    console.log(keyword)
+    client.connect(err => {
+        const collection = client.db('on_looker').collection('upload_image');
+        console.log("Database connected successfully")
+        collection.find({ data: { $regex: keyword } }).forEach(ele => {
+            resURL.push(ele.url);
+        }).then(() => {
+            res.json({ url: resURL })
+        })
+    })
 })
 
 app.post('/upload', upload.single('myImage'), (req, res) => {
     console.log(req.file);
     Tesseract.recognize(req.file.path, 'eng', { logger: m => console.log(m) })
         .then(({ data: { text } }) => {
+            client.connect(err => {
+                const collection = client.db('on_looker').collection('upload_image');
+                console.log("Database connected successfully")
+                collection.insertOne({
+                    url: req.file.path.substring(6),
+                    data: text.toLowerCase()
+                })
+            })
             res.json({ message: resStatus });
             console.log(text);
         })
