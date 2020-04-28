@@ -1,4 +1,4 @@
-# On Looker
+# On Looker Web
 [![GitHub issues](https://img.shields.io/github/issues/JigyasuPrakash/on-looker)](https://github.com/JigyasuPrakash/on-looker/issues) [![GitHub forks](https://img.shields.io/github/forks/JigyasuPrakash/on-looker)](https://github.com/JigyasuPrakash/on-looker/network) [![GitHub stars](https://img.shields.io/github/stars/JigyasuPrakash/on-looker)](https://github.com/JigyasuPrakash/on-looker/stargazers) [![GitHub license](https://img.shields.io/github/license/JigyasuPrakash/on-looker)](https://github.com/JigyasuPrakash/on-looker/blob/master/LICENCE) ![Database](https://img.shields.io/badge/Database-MongoDB-brightgreen) ![Server](https://img.shields.io/badge/Server-Express_JS-brightgreen) ![Tesseract](https://img.shields.io/badge/Image_Processing-Tesseract_JS-brightgreen)
 
 ---
